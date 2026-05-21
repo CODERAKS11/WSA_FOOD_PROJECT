@@ -72,7 +72,7 @@ export const updateCartQuantity = (foodItemId, quantity, alert) => async(dispatc
 
 //Remove items from cart
 
-export const removeItemFromCart = (foodItemId) => async(dispatch, getState) => {
+export const removeItemFromCart = (foodItemId, alert) => async(dispatch, getState) => {
     try{
         const {user} =getState().auth;
         if(typeof foodItemId === "object"){
@@ -88,6 +88,8 @@ export const removeItemFromCart = (foodItemId) => async(dispatch, getState) => {
                 payload : response.data
             });
     } catch (error){
-        alert.error(error.response ? error.response.data.message : error.message);
+        if (alert) {
+            alert.error(error.response ? error.response.data.message : error.message);
+        }
     }
 };

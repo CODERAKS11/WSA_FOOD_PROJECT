@@ -1,13 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import Loader from "../layouts/Loader";
 import { LiaRupeeSignSolid } from "react-icons/lia";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { clearErrors, getOrderDetails } from "../../actions/orderAction";
 import { Link } from "react-router-dom";
+import { appAlert as alert } from "../../utils/alert";
 const OrderDetails = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { id } = useParams();
   const {
@@ -31,7 +30,7 @@ const OrderDetails = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error, id]);
+  }, [dispatch, error, id]);
 
   const deliveryDetails =
     deliveryInfo &&

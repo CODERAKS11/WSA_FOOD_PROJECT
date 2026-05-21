@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { LiaRupeeSignSolid } from "react-icons/lia";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchCartItems,
@@ -8,6 +7,7 @@ import {
   updateCartQuantity,
 } from "../../actions/cartAction";
 import {payment} from "../../actions/orderAction";
+import { appAlert as alert } from "../../utils/alert";
 
 // let fakeCartItems = [ 
 //   {
@@ -46,12 +46,11 @@ import {payment} from "../../actions/orderAction";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const alert = useAlert();
   const { cartItems, restaurant } = useSelector((state) => state.cart);
 
   useEffect(() => {
     dispatch(fetchCartItems(alert));
-  }, [dispatch, alert]);
+  }, [dispatch]);
 
   const removeCartItemHandler = (id) => {
     dispatch(removeItemFromCart(id, alert));

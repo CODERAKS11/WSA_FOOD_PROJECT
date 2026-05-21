@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, forgotPassword } from "../../actions/userAction";
+import { appAlert as alert } from "../../utils/alert";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
 
-  const alert = useAlert();
   const dispatch = useDispatch();
 
   const { error, loading, message } = useSelector(
@@ -21,7 +20,7 @@ const ForgotPassword = () => {
     if (message) {
       alert.success(message);
     }
-  }, [dispatch, alert, error, message]);
+  }, [dispatch, error, message]);
 
   const submitHandler = (e) => {
     e.preventDefault();

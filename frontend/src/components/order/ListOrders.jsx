@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { MDBDataTable } from "mdbreact";
 import { FaRegEye } from "react-icons/fa6";
 import Loader from "../layouts/Loader";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { clearErrors, myOrders } from "../../actions/orderAction";
 import { getRestaurants } from "../../actions/restaurantAction";
 import { FaRupeeSign } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { appAlert as alert } from "../../utils/alert";
 
 const ListOrders = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
 
   const { loading, error, orders } = useSelector((state) => state.myOrders);
@@ -27,7 +26,7 @@ const ListOrders = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, error]);
+  }, [dispatch, error]);
 
   const setOrders = () => {
     const data = {

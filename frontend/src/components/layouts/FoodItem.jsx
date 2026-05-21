@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useAlert } from 'react-alert';
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addItemToCart, removeItemFromCart, updateCartQuantity } from '../../actions/cartAction';
+import { appAlert as alert } from '../../utils/alert';
 
 export default function FoodItem({ fooditem, restaurant }) {
     const [quantity, setQuantity] = useState(1);
@@ -13,8 +13,6 @@ export default function FoodItem({ fooditem, restaurant }) {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const alert = useAlert();
-
     const cartItems = useSelector((state) => state.cart.cartItems);
 
     useEffect(() => {

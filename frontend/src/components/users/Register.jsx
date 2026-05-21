@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearErrors, register } from "../../actions/userAction";
+import { appAlert as alert } from "../../utils/alert";
 
 const Register = () => {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,7 +33,7 @@ const Register = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, isAuthenticated, error, navigate]);
+  }, [dispatch, isAuthenticated, error, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();

@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { clearErrors, resetPassword } from "../../actions/userAction";
+import { appAlert as alert } from "../../utils/alert";
 
 const NewPassword = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
 
-  const alert = useAlert();
   const dispatch = useDispatch();
 
   const { error, success } = useSelector((state) => state.forgotPassword);
@@ -25,7 +24,7 @@ const NewPassword = () => {
       alert.success("Password updated successfully");
       navigate("/users/login");
     }
-  }, [dispatch, alert, success, navigate, error]);
+  }, [dispatch, success, navigate, error]);
 
   const submitHandler = (e) => {
     e.preventDefault();

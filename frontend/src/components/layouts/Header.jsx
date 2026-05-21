@@ -1,12 +1,11 @@
 import React from "react";
 import Search from "./Search";
 import { Link } from "react-router-dom";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../actions/userAction";
+import { appAlert as alert } from "../../utils/alert";
 
 export default function Header() {
-  const alert = useAlert();
   const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.auth);
   const {cartItems} = useSelector((state) => state.cart)

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import Loader from "../layouts/Loader";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { clearErrors, login } from "../../actions/userAction";
+import { appAlert as alert } from "../../utils/alert";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
@@ -26,7 +25,7 @@ const Login = () => {
       alert.error(error);
       dispatch(clearErrors());
     }
-  }, [dispatch, alert, isAuthenticated, error, navigate]);
+  }, [dispatch, isAuthenticated, error, navigate]);
 
   const submitHandler = (e) => {
     e.preventDefault();

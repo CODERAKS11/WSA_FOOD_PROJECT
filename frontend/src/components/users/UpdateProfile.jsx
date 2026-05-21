@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useAlert } from "react-alert";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearErrors, loadUser, updateProfile } from "../../actions/userAction";
 import { UPDATE_PROFILE_RESET  } from "../../constants/userConstant";
+import { appAlert as alert } from "../../utils/alert";
 
 const UpdateProfile = () => {
   const [name, setName] = useState("");
@@ -11,7 +11,6 @@ const UpdateProfile = () => {
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("/images/images.png");
 
-  const alert = useAlert();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -36,7 +35,7 @@ const UpdateProfile = () => {
         type: UPDATE_PROFILE_RESET,
       });
     }
-  }, [dispatch, alert, error, navigate, isUpdated, user]);
+  }, [dispatch, error, navigate, isUpdated, user]);
 
   const submitHandler = (e) => {
     e.preventDefault();
