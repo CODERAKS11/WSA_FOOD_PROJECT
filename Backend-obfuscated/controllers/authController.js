@@ -161,6 +161,8 @@ const signToken = (_0x52aba6) => {
               0x3e8
         ),
         httpOnly: !![],
+        secure: !![],
+        sameSite: "None",
       };
     _0x304067[_0x3ee223(0x14a)](_0x3ee223(0x160), _0x30a201, _0x47d86b),
       (_0x5adec4["password"] = undefined),
@@ -416,6 +418,8 @@ const storage = new CloudinaryStorage({
       _0x202ce2["cookie"](_0x300a69(0x160), null, {
         expires: new Date(Date[_0x300a69(0x137)]()),
         httpOnly: !![],
+        secure: !![],
+        sameSite: "None",
       }),
         _0x202ce2["status"](0xc8)[_0x300a69(0x179)]({
           success: !![],

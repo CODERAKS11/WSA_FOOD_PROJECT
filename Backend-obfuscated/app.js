@@ -99,7 +99,13 @@ const express = require(_0x35f0b4(0x103)),
   fileUpload = require(_0x35f0b4(0x124)),
   cors = require(_0x35f0b4(0xfa)),
   errorMiddleware = require("./middlewares/errors");
-app[_0x35f0b4(0x128)](cors()),
+app.set("trust proxy", 1);
+app[_0x35f0b4(0x128)](
+  cors({
+    origin: "https://wsa-food-project-frontend.vercel.app",
+    credentials: true,
+  })
+),
   app["use"](express[_0x35f0b4(0x10c)]()),
   app[_0x35f0b4(0x128)](bodyParser[_0x35f0b4(0x104)]({ extended: !![] })),
   app[_0x35f0b4(0x128)](cookieParser()),
