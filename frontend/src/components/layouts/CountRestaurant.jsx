@@ -9,7 +9,7 @@ export default function CountRestaurant() {
 
   useEffect(() => {
     dispatch(getRestaurants());
-  }, [])
+  }, [dispatch])
 
   return (
     <div>
